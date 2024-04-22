@@ -4,11 +4,7 @@
 # Archivo humanista_cientifico.py
 import humanista_cientifico
 
-def validacion_nota(nota_promedio_alumno):
-    nota_str = str(nota_promedio_alumno).strip()  # Asegurarse de eliminar espacios en blanco
-
-    # Verificar si el input contiene un punto decimal
-    if '.' in nota_str:
+def validacion_decimal(nota_str):
         try:
             # Si contiene un punto decimal, convertir a float y verificar el rango
             nota_float = float(nota_str)
@@ -18,9 +14,8 @@ def validacion_nota(nota_promedio_alumno):
                 return None
         except ValueError:
             return None  # Si hay error en la conversión, devolver None
-
-    elif nota_str.isdigit():
-        # Si el input es todo dígitos (sin puntos), manejar según la longitud
+def validacion_string(nota_str):
+            # Si el input es todo dígitos (sin puntos), manejar según la longitud
         if len(nota_str) == 1:
             # Un solo dígito, convertir a float para verificar rango
             if 4 <= float(nota_str) <= 7:
@@ -35,15 +30,25 @@ def validacion_nota(nota_promedio_alumno):
             nota_convertida = nota_str[0] + '.' + nota_str[1:]
             if 4 <= float(nota_convertida) <= 7:
                 return nota_convertida
+        
+def validacion_nota(nota_promedio_alumno):
+    nota_str = str(nota_promedio_alumno).strip()  # Asegurarse de eliminar espacios en blanco
+    # Verificar si el input contiene un punto decimal
+    if '.' in nota_str:
+        nota_str = validacion_decimal(nota_str)
+        return nota_str
+    if nota_str.isdigit():
+        nota_str = validacion_string(nota_str)
+        return nota_str
+
     return None  # Devolver None si no cumple ninguna de las condiciones anteriores
 
 def puntajes_humanista_cientifico():
         print("Cálculo de NEM")
         nota_promedio_alumno = input("Ingrese su nota promedio de los 4 años: \n #: ")
         nota_final = validacion_nota(nota_promedio_alumno)
-        print(nota_final)
         puntaje = humanista_cientifico.main(nota_final)
-        print(f"\nEl puntaje NEM para la nota {nota_promedio_alumno} es: {puntaje}")
+        print(f"\nEl puntaje NEM para la nota {nota_final} es: {puntaje}")
 
         ranking_alumnos = input("Ingrese el ranking de alumno: \n #: ")
         print(f"\nEl ranking de alumnos: {ranking_alumnos}")
