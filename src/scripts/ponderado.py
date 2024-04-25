@@ -4,7 +4,8 @@
 # Archivo humanista_cientifico.py
 #from . import humanista_cientifico
 
-import humanista_cientifico
+from . import humanista_cientifico
+
 def validacion_decimal(nota_str):
         try:
             # Si contiene un punto decimal, convertir a float y verificar el rango
@@ -55,14 +56,16 @@ def validacion_nota(nota_promedio_alumno):
 # Puntaje de ciencias: puntaje_ciencias
 # Puntaje de historia: puntaje_historia
 def puntajes():
+
+
         # declarar variables
         puntaje_historia, puntaje_ciencias, puntaje_matematica_m2 = None, None, None
 
         print("Cálculo de NEM")
         nota_promedio_alumno = input("Ingrese su nota promedio de los 4 años: \n #: ")
         nota_final = validacion_nota(nota_promedio_alumno)
-        puntaje = humanista_cientifico.main(nota_final)
-        print(f"\nEl puntaje NEM para la nota {nota_final} es: {puntaje}")
+        puntaje_nem = humanista_cientifico.main(nota_final)
+        print(f"\nEl puntaje NEM para la nota {nota_final} es: {puntaje_nem}")
 
         ranking_alumnos = input("Ingrese el ranking de alumno: \n #: ")
         print(f"\nEl ranking de alumnos: {ranking_alumnos}")
@@ -90,7 +93,8 @@ def puntajes():
             print(f"\nEl puntaje historia: {puntaje_historia}")
 
         # Crear lista para retornar los datos. Todas las pruebas = 7. Valor lista = 6
-        puntajes_usuario = [puntaje, ranking_alumnos, puntaje_matematica_m1, puntaje_lenguaje, puntaje_ciencias, puntaje_matematica_m2, puntaje_historia]
+        # Valores entregados: Nem, Ranking, Lenguaje, M1, M2, Ciencias, Historia
+        puntajes_usuario = [puntaje_nem, ranking_alumnos, puntaje_lenguaje , puntaje_matematica_m1, puntaje_matematica_m2, puntaje_ciencias, puntaje_historia]
 
         # Si la prueba no se realizó, el usuario no la ingresará. por lo tanto, sacamos la variable de la lista
         if puntaje_historia == None:
@@ -102,19 +106,4 @@ def puntajes():
 
         return puntajes_usuario
 
-def ponderado():
-    while True:
-        print("Sistema de ponderado")
-        print("1. Perteneces a un colegio Humanista-Cientifico")
-        option_menu = int(input("INGRESE LA OPCIÓN\n #: "))
-        
-        if option_menu == 1:
-            puntajes()
-        if option_menu == 2:
-            break
-        if option_menu == 3:
-            break
 
-
-if __name__ == "__main__":
-    ponderado()

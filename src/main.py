@@ -2,10 +2,10 @@
     Sistema de ponderado
 """
 
-import scripts.ponderado as ponderado
+from scripts import menu
 
 def main():
-    ponderado.ponderado()
+    menu.calculo_ponderado()
 
 if __name__ == '__main__':
     main()
