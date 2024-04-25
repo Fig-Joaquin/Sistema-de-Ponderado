@@ -37,6 +37,9 @@ def porcentajes_uni():
         porcentajes_universidad.pop(4)
     print(porcentajes_universidad)
 
+    for i in range(len(porcentajes_universidad)):
+        porcentajes_universidad[i] = float(porcentajes_universidad[i])/100
+    print('DEBUG PORCENTAJE_UNIVERSIDAD',porcentajes_universidad)
     return porcentajes_universidad
 
 if __name__ == '__main__':
