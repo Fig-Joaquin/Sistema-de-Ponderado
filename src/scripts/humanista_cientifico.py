@@ -1,4 +1,5 @@
 import json
+
 nota_promedio = None
 
 def load_nem_scores():

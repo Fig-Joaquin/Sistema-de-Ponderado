@@ -2,8 +2,9 @@
     Archivo ponderado.py que contiene la función ponderado
 """
 # Archivo humanista_cientifico.py
-import humanista_cientifico
+#from . import humanista_cientifico
 
+import humanista_cientifico
 def validacion_decimal(nota_str):
         try:
             # Si contiene un punto decimal, convertir a float y verificar el rango
@@ -43,7 +44,20 @@ def validacion_nota(nota_promedio_alumno):
 
     return None  # Devolver None si no cumple ninguna de las condiciones anteriores
 
-def puntajes_humanista_cientifico():
+"""
+    Variables de las pruebas
+"""
+
+# Ranking : ranking_alumnos
+# Prueba de matematicas M1: puntaje_matematicas_m1
+# Prueba de lenguaje: puntaje_lenguaje
+# Puntaje de matematicas M2: puntaje_matematicas_m2
+# Puntaje de ciencias: puntaje_ciencias
+# Puntaje de historia: puntaje_historia
+def puntajes():
+        # declarar variables
+        puntaje_historia, puntaje_ciencias, puntaje_matematica_m2 = None, None, None
+
         print("Cálculo de NEM")
         nota_promedio_alumno = input("Ingrese su nota promedio de los 4 años: \n #: ")
         nota_final = validacion_nota(nota_promedio_alumno)
@@ -75,6 +89,18 @@ def puntajes_humanista_cientifico():
             puntaje_historia = input("Ingrese su puntaje de historia: \n #: ")
             print(f"\nEl puntaje historia: {puntaje_historia}")
 
+        # Crear lista para retornar los datos. Todas las pruebas = 7. Valor lista = 6
+        puntajes_usuario = [puntaje, ranking_alumnos, puntaje_matematica_m1, puntaje_lenguaje, puntaje_ciencias, puntaje_matematica_m2, puntaje_historia]
+
+        # Si la prueba no se realizó, el usuario no la ingresará. por lo tanto, sacamos la variable de la lista
+        if puntaje_historia == None:
+            puntajes_usuario.pop()
+        if puntaje_matematica_m2 == None:
+            puntajes_usuario.pop(5)
+        if puntaje_ciencias == None:
+            puntajes_usuario.pop(4)
+
+        return puntajes_usuario
 
 def ponderado():
     while True:
@@ -83,7 +109,7 @@ def ponderado():
         option_menu = int(input("INGRESE LA OPCIÓN\n #: "))
         
         if option_menu == 1:
-            puntajes_humanista_cientifico()
+            puntajes()
         if option_menu == 2:
             break
         if option_menu == 3:

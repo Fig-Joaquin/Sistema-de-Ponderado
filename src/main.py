@@ -1,8 +1,8 @@
 """
-        Sistema de ponderado
+    Sistema de ponderado
 """
 
-from scripts import ponderado
+import scripts.ponderado as ponderado
 
 def main():
     ponderado.ponderado()
