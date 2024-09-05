@@ -4,7 +4,7 @@ nota_promedio = None
 
 def load_nem_scores():
     """Carga los puntajes NEM desde un archivo JSON."""
-    with open('src/files/nem_humanista-cientifico.json', 'r') as file:
+    with open('./files/nem_humanista-cientifico.json', 'r') as file:
         return json.load(file)
 
 def get_nem_score(nota_nem, puntaje_nota):
